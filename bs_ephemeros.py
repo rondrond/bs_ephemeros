@@ -12,13 +12,11 @@ class bluesky_ephemeros:
     post_rkey = AtUri.from_str(feed_view.post.uri).rkey
     now = datetime.utcnow()
     difference = datetime.utcnow()-datetime.strptime(feed_view.post.indexedAt.replace('T', ' ').replace('Z', ''), '%Y-%m-%d %H:%M:%S.%f')
-    print(f'{feed_view.post.author.handle}: {feed_view.post.record.text}')
-    print('Days:')
-    print(f'{difference.days.real}')
+    print(f'{feed_view.post.author.handle}: {feed_view.post.record.text}\nDays: {difference.days.real}')
 
     if(difference.days.real >= older_than):
      if(self.delete_post(post_rkey)):
-      print('Deleted\n\n')
+      print('DELETED\n\n')
     else:
      print('Before expiration date!\n\n')
 
