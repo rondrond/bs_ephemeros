@@ -13,7 +13,7 @@ class bluesky_ephemeros:
     now = datetime.utcnow()
     difference = datetime.utcnow()-datetime.strptime(feed_view.post.indexedAt.replace('T', ' ').replace('Z', ''), '%Y-%m-%d %H:%M:%S.%f')
     print(f'{feed_view.post.author.handle}: {feed_view.post.record.text}')
-    print('Dias:')
+    print('Days:')
     print(f'{difference.days.real}')
 
     if(difference.days.real >= older_than):
