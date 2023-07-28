@@ -1,4 +1,3 @@
-credentials.py
+settings.py
 __pycache__/
-.gitignore
 .bs_ephemeros.py.swp

@@ -1,0 +1,4 @@
+handle='user handle'
+password='password'
+#delete posts older than (in days)
+delete_older_than=1
