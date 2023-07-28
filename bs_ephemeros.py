@@ -4,6 +4,8 @@ from datetime import datetime
 from credentials import username,password,older_than
 
 class bluesky_ephemeros:
+ delete = False
+
  def load(self):
   self.client = Client()
   self.login = self.client.login(username,password)
@@ -13,16 +15,17 @@ class bluesky_ephemeros:
     now = datetime.utcnow()
     difference = datetime.utcnow()-datetime.strptime(feed_view.post.indexedAt.replace('T', ' ').replace('Z', ''), '%Y-%m-%d %H:%M:%S.%f')
     print(f'{feed_view.post.author.handle}: {feed_view.post.record.text}\nDays: {difference.days.real}')
-
-    if(difference.days.real >= older_than):
-     if(self.delete_post(post_rkey)):
-      print('DELETED\n\n')
-    else:
-     print('Before expiration date!\n\n')
+    if (self.delete):
+     if(difference.days.real >= older_than):
+      if(self.delete_post(post_rkey)):
+       print('DELETED\n\n')
+     else:
+      print('Before expiration date!\n\n')
 
  def delete_post(self, rkey):
   return self.client.delete_post(rkey)
 
-bsephemeros = bluesky_ephemeros();
+bsephemeros = bluesky_ephemeros()
+bsephemeros.delete = True
 bsephemeros.load()
 
