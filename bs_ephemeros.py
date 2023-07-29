@@ -23,8 +23,7 @@ class bluesky_ephemeros:
 
  def delete_post(self, rkey):
   return self.client.delete_post(rkey)
-
+ 
 bsephemeros = bluesky_ephemeros()
 bsephemeros.delete = True
 bsephemeros.load()
-
